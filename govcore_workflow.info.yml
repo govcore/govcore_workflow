@@ -1,0 +1,11 @@
+name: 'GovCore Workflow'
+core: 8.x
+core_version_requirement: '^8 || ^9'
+type: module
+description: 'Tools to improve your content workflow.'
+package: GovCore
+dependencies:
+  - drupal:content_moderation
+  - govcore_core:govcore_core
+components:
+  - govcore_scheduler

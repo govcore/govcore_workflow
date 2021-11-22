@@ -1,0 +1,10 @@
+services:
+  govcore_workflow.views_data:
+    class: '\Drupal\govcore_workflow\ViewsData'
+    arguments:
+      - '@entity_type.manager'
+
+  govcore_workflow.route_subscriber:
+    class: '\Drupal\govcore_workflow\Routing\RouteSubscriber'
+    tags:
+      - { name: event_subscriber }

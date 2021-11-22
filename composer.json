@@ -8,9 +8,9 @@
         "drupal/conflict": "^2.0-alpha2",
         "drupal/core": "^8.8.10 || ^9.0.6",
         "drupal/diff": "^1.0",
-        "govcore/govcore_core": "^1.0",
         "drupal/moderation_dashboard": "^1.0",
-        "drupal/moderation_sidebar": "^1.2"
+        "drupal/moderation_sidebar": "^1.2",
+        "govcore/govcore_core": "^1.0"
     },
     "require-dev": {
         "composer/installers": "^1.9",

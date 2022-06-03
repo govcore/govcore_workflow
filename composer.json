@@ -6,54 +6,36 @@
     "require": {
         "drupal/autosave_form": "^1.2",
         "drupal/conflict": "^2.0-alpha2",
-        "drupal/core": "^8.8.10 || ^9.0.6",
+        "drupal/core": "^8.8.10 || ^9.2.18",
         "drupal/diff": "^1.0",
+        "govcore/govcore_core": "^1.2",
         "drupal/moderation_dashboard": "^1.0",
-        "drupal/moderation_sidebar": "^1.2",
-        "govcore/govcore_core": "^1.0"
+        "drupal/moderation_sidebar": "^1.2"
     },
     "require-dev": {
         "composer/installers": "^1.9",
         "drupal/core-composer-scaffold": "*",
         "drupal/core-dev": "*",
         "drupal/inline_entity_form": "^1.0",
-        "drush/drush": ">=9.7",
+        "drush/drush": ">=10",
         "vijaycs85/drupal-quality-checker": "^1.0"
-    },
-    "config": {
-        "preferred-install": {
-            "drupal/core": "dist"
-        }
     },
     "extra": {
         "branch-alias": {
             "dev-8.x-3.x": "3.x-dev"
         },
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": "docroot/"
-            },
-            "file-mapping": {
-                "[project-root]/.gitattributes": false,
-                "[project-root]/.editorconfig": false,
-                "[web-root]/example.gitignore": false,
-                "[web-root]/.csslintrc": false,
-                "[web-root]/modules/README.txt": false,
-                "[web-root]/profiles/README.txt": false,
-                "[web-root]/sites/README.txt": false,
-                "[web-root]/themes/README.txt": false,
-                "[web-root]/INSTALL.txt": false,
-                "[web-root]/robots.txt": false,
-                "[web-root]/web.config": false
-            }
-        },
-        "enable-patching": true,
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "docroot/core": [
                 "type:drupal-core"
             ],
             "docroot/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "docroot/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -63,16 +45,11 @@
             ],
             "docroot/themes/contrib/{$name}": [
                 "type:drupal-theme"
+            ],
+            "drush/Commands/{$name}": [
+                "type:drupal-drush"
             ]
         }
-    },
-    "autoload": {
-        "psr-4": {
-            "Drupal\\Tests\\govcore_workflow\\": "tests/src"
-        },
-        "classmap": [
-            "tests/contexts"
-        ]
     },
     "repositories": {
         "drupal": {
@@ -83,25 +60,52 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        "govcore": {
-            "type": "vcs",
-            "url": "https://github.com/govcore/govcore_core.git"
+        "iframe": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor-plugin/iframe",
+                "version": "4.16.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/iframe/releases/iframe_4.16.2.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
+        },
+        "fakeobjects": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor-plugin/fakeobjects",
+                "version": "4.16.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.2.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
+        },
+        "link": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor-plugin/link",
+                "version": "4.18.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/link/releases/link_4.18.0.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-update-cmd": [
-            "@putenv DIR=./docroot/modules/govcore_workflow",
-            "mkdir -p $DIR",
-            "ln -s -f $PWD/config $DIR",
-            "ln -s -f $PWD/images $DIR",
-            "ln -s -f $PWD/modules $DIR",
-            "ln -s -f $PWD/src $DIR",
-            "ln -s -f $PWD/tests $DIR",
-            "find $PWD -name 'govcore_workflow.*' -depth 1 -exec ln -s -f {} $DIR ';'",
-            "cp -f phpunit.xml ./docroot/core"
-        ],
-        "nuke": "rm -r -f docroot vendor"
-    }
+    "prefer-stable": true
 }

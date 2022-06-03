@@ -251,25 +251,6 @@ function govcore_workflow_modules_installed(array $modules) {
     return;
   }
 
-  if (in_array('govcore_roles', $modules, TRUE)) {
-    Drupal::service('govcore.content_roles')
-      ->grantPermissions('creator', [
-        'use editorial transition create_new_draft',
-        'use editorial transition review',
-        'view any unpublished content',
-        'view latest version',
-        'use moderation sidebar',
-      ])
-      ->grantPermissions('reviewer', [
-        'use editorial transition publish',
-        'use editorial transition review',
-        'use editorial transition archive',
-        'view any unpublished content',
-        'view latest version',
-        'access toolbar',
-        'use moderation sidebar',
-      ]);
-  }
   if (in_array('autosave_form', $modules, TRUE)) {
     // Find all content types that would like to opt into autosave by default,
     // either implicitly or explicitly. I'm not sure this can be done with a

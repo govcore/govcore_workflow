@@ -1,4 +1,4 @@
-name: Scheduler
+name: GovCore Scheduler
 core: 8.x
 core_version_requirement: '^8 || ^9'
 type: module

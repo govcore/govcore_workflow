@@ -16,6 +16,11 @@ class PurgeTest extends MigrationTestBase {
   /**
    * {@inheritdoc}
    */
+  protected $defaultTheme = 'stark';
+
+  /**
+   * {@inheritdoc}
+   */
   public function test() {
     parent::test();
 

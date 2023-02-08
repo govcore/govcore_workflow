@@ -11,6 +11,11 @@ use Drupal\node\NodeInterface;
  */
 class BaseFieldMigrationTest extends MigrationTestBase {
 
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
+
   public function test() {
     parent::test();
 

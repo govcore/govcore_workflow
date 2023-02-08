@@ -6,106 +6,14 @@
     "require": {
         "drupal/autosave_form": "^1.2",
         "drupal/conflict": "^2.0-alpha2",
-        "drupal/core": "^8.8.10 || ^9.2.18",
         "drupal/diff": "^1.0",
-        "govcore/govcore_core": "^1.2",
+        "govcore/govcore_core": "^5",
         "drupal/moderation_dashboard": "^1.0",
         "drupal/moderation_sidebar": "^1.2"
     },
     "require-dev": {
-        "composer/installers": "^1.9",
-        "drupal/core-composer-scaffold": "*",
-        "drupal/core-dev": "*",
-        "drupal/inline_entity_form": "^1.0",
-        "drush/drush": ">=10",
-        "vijaycs85/drupal-quality-checker": "^1.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-8.x-3.x": "3.x-dev"
-        },
-        "installer-types": [
-            "bower-asset",
-            "npm-asset"
-        ],
-        "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
-            ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library",
-                "type:bower-asset",
-                "type:npm-asset"
-            ],
-            "docroot/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "docroot/profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "docroot/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/{$name}": [
-                "type:drupal-drush"
-            ]
-        }
-    },
-    "repositories": {
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        "assets": {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        },
-        "iframe": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor-plugin/iframe",
-                "version": "4.16.2",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/iframe/releases/iframe_4.16.2.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        },
-        "fakeobjects": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor-plugin/fakeobjects",
-                "version": "4.16.2",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.2.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        },
-        "link": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor-plugin/link",
-                "version": "4.18.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/link/releases/link_4.18.0.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+        "drush/drush": "^10 || ^11",
+        "drupal/inline_entity_form": "^1",
+        "drupal/quickedit": "^1"
+    }
 }

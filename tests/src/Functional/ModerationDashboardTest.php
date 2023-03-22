@@ -8,6 +8,8 @@ use Drupal\Tests\BrowserTestBase;
  * Tests GovCore Workflow's integration with Moderation Dashboard.
  *
  * @group govcore_workflow
+ *
+ * @requires module moderation_dashboard
  */
 class ModerationDashboardTest extends BrowserTestBase {
 

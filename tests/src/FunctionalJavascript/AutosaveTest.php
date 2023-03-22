@@ -9,6 +9,8 @@ use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
  * Tests GovCore Workflow's integration with Autosave Form.
  *
  * @group govcore_workflow
+ *
+ * @requires module autosave_form
  */
 class AutosaveTest extends WebDriverTestBase {
 

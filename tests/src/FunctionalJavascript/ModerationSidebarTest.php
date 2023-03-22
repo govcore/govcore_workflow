@@ -8,6 +8,8 @@ use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
  * Tests GovCore Workflow's integration with Moderation Sidebar.
  *
  * @group govcore_workflow
+ *
+ * @requires module moderation_sidebar
  */
 class ModerationSidebarTest extends WebDriverTestBase {
 

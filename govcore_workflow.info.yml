@@ -5,4 +5,9 @@ description: 'Tools to improve your content workflow.'
 package: GovCore
 dependencies:
   - drupal:content_moderation
-  - govcore_core:govcore_core
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2023-01-10
+version: '4.0.0'
+project: 'govcore_workflow'
+datestamp: 1673384324

@@ -7,6 +7,8 @@ use Drupal\user\Entity\Role;
 
 /**
  * @group govcore_workflow
+ *
+ * @requires module moderation_sidebar
  */
 class ModerationSidebarTest extends BrowserTestBase {
 

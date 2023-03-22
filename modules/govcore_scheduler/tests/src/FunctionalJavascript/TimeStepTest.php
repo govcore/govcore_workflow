@@ -64,8 +64,8 @@ class TimeStepTest extends WebDriverTestBase {
     $this->drupalLogin($this->createUser([], NULL, TRUE));
 
     foreach ($steps as $step) {
-      $this->drupalGet('/admin/config/system/govcore');
-      $page->clickLink('Scheduler');
+      $this->drupalGet('/admin/config/workflow');
+      $page->clickLink('GovCore Scheduler');
       $page->selectFieldOption('time_step', $step['time_step']);
       $page->pressButton('Save configuration');
 

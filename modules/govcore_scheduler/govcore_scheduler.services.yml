@@ -8,15 +8,6 @@ services:
       - '@logger.channel.cron'
       - '@string_translation'
 
-  govcore_scheduler.migrator:
-    class: 'Drupal\govcore_scheduler\Migrator'
-    arguments:
-      - '@entity_type.manager'
-      - '@database'
-      - '@state'
-      - '@messenger'
-      - '@string_translation'
-
   # To facilitate testing, decorate the datetime.time service with an
   # implementation that can return an arbitrary request time from state.
   govcore_scheduler.datetime.time:

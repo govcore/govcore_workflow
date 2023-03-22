@@ -8,6 +8,8 @@ use Drupal\Tests\BrowserTestBase;
  * Tests GovCore Workflow's integration with Diff.
  *
  * @group govcore_workflow
+ *
+ * @requires module diff
  */
 class DiffTest extends BrowserTestBase {
 

@@ -5,6 +5,7 @@
  * Contains hook implementations for GovCore Scheduler.
  */
 
+use Drupal\content_moderation\Plugin\Field\FieldWidget\ModerationStateWidget as ContentModerationStateWidget;
 use Drupal\Core\Cache\CacheCollectorInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\ContentEntityInterface;
@@ -14,7 +15,6 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Update\UpdateKernel;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
-use Drupal\govcore_core\OverrideHelper;
 use Drupal\govcore_scheduler\Plugin\Field\FieldWidget\ModerationStateWidget;
 
 /**
@@ -22,7 +22,7 @@ use Drupal\govcore_scheduler\Plugin\Field\FieldWidget\ModerationStateWidget;
  */
 function govcore_scheduler_library_info_alter(array &$libraries, $extension) {
   if ($extension === 'seven') {
-    $dir = \Drupal::service('extension.list.module')->getPath('govcore_scheduler');
+    $dir = drupal_get_path('module', 'govcore_scheduler');
 
     $libraries['govcore_scheduler.widget'] = [
       'css' => [
@@ -92,8 +92,6 @@ function govcore_scheduler_entity_base_field_info(EntityTypeInterface $entity_ty
   /** @var \Drupal\content_moderation\ModerationInformationInterface $moderation_info */
   $moderation_info = Drupal::service('content_moderation.moderation_information');
 
-  $migrations = Drupal::service('govcore_scheduler.migrator')->getMigrations();
-
   if ($moderation_info->canModerateEntitiesOfEntityType($entity_type)) {
     $fields['scheduled_transition_date'] = BaseFieldDefinition::create('datetime')
       ->setDisplayConfigurable('view', FALSE)
@@ -110,22 +108,6 @@ function govcore_scheduler_entity_base_field_info(EntityTypeInterface $entity_ty
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
       ->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED);
-
-    // If the entity type has not yet been migrated, we need to continue to
-    // define the base fields from the 1.x version.
-    if (in_array($entity_type->id(), $migrations, TRUE)) {
-      $fields['scheduled_publication'] = BaseFieldDefinition::create('datetime')
-        ->setDisplayConfigurable('view', FALSE)
-        ->setDisplayConfigurable('form', FALSE)
-        ->setTranslatable(TRUE)
-        ->setRevisionable(TRUE);
-
-      $fields['scheduled_moderation_state'] = BaseFieldDefinition::create('string')
-        ->setDisplayConfigurable('view', FALSE)
-        ->setDisplayConfigurable('form', FALSE)
-        ->setTranslatable(TRUE)
-        ->setRevisionable(TRUE);
-    }
   }
 
   return $fields;
@@ -135,7 +117,9 @@ function govcore_scheduler_entity_base_field_info(EntityTypeInterface $entity_ty
  * Implements hook_field_widget_info_alter().
  */
 function govcore_scheduler_field_widget_info_alter(array &$info) {
-  OverrideHelper::pluginClass($info['moderation_state_default'], ModerationStateWidget::class);
+  if ($info['moderation_state_default']['class'] === ContentModerationStateWidget::class) {
+    $info['moderation_state_default']['class'] = ModerationStateWidget::class;
+  }
 }
 
 /**

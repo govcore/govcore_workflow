@@ -1,5 +1,5 @@
 govcore_scheduler.settings:
-  title: 'Scheduler'
+  title: 'GovCore Scheduler'
   description: 'Configure GovCore Scheduler settings.'
-  parent: govcore_core.settings
+  parent: system.admin_config_workflow
   route_name: govcore_scheduler.settings

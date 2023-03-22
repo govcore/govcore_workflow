@@ -23,6 +23,7 @@ class ModerationTest extends BrowserTestBase {
   protected static $modules = [
     'block',
     'govcore_workflow',
+    'path',
     'views',
   ];
 
